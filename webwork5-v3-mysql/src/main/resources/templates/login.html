@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link rel="stylesheet" href="../static/login/loginStyle.css"/>
+    <script src="../static/login/loginJs.js"></script>
+    <script src="/webjars/jquery/3.5.1/"></script>
+</head>
+<body onload="OnLoad()">
+<div class="container" id="Main">
+    <form id='form1' class="login-form" action="checklogin" method="post"
+          th:object="${user}">
+        <h2>登录</h2>
+        <p>
+            <img src='../static/login/usericon.png' width="30px" height="30px"/>
+            <input type="text" id="UNAME" th:field="*{username}" placeholder="用户名" autocomplete="off"
+                   pattern="[a-zA-Z0-9]{4,}" maxlength="10" required/>
+        </p>
+        <p>
+            <img src='../static/login/pswicon.png' width="30px" height="30px"/>
+            <input type="password" id="UPSW" th:field="*{password}" placeholder="密码" pattern=".{6,}"
+                   maxlength="16" required/>
+        </p>
+        <!--提示信息 如果有提示消息 则 显示，如果没有，则HTML元素解析器直接跳过该元素的解析-->
+        <span class="alert" th:if="${user.message}" th:text="${user.message}"></span>
+        <input type="submit" id="SUB"/>
+    </form>
+</div>
+</body>
+</html>

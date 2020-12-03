@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="../static/Nav/Navcss.css"/>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../static/Nav/navjs.js"></script>
+</head>
+<body>
+<div id="mc">
+    <h2 id="title">欢迎使用通讯录系统</h2>
+    <h3 id="subtitle" th:text="${message}?:'请先登录'"></h3>
+    <div id="bc">
+        <button class="b1" id="b1" onclick="login()" th:disabled="${session.login}">登录</button>
+        <button class="b1" id="b2" onclick="logout()" th:disabled="!${session.login}">注销</button>
+        <button class="b1" id="b3" onclick="toMain()" th:disabled="!${session.login}">主页</button>
+        <button class="b1" id="b4" onclick="add()" th:disabled="!${session.login}">添加</button>
+    </div>
+</div>
+</body>
+</html>

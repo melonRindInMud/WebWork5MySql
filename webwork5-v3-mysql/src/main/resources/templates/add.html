@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link rel="stylesheet" href="../static/add/addStyle.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="../static/add/addJs.js" defer></script>
+</head>
+<body>
+<div>
+    <h2>添加新的联系人</h2>
+    <form id="form1" action="/checkadd" method="post" th:object="${cont}">
+        <p id="p1">
+            姓名:
+            <input type="text" id="Uname" th:field="*{contactname}" autocomplete="off" maxlength="25"
+                   pattern="[\u4e00-\u9fa5a-zA-Z_0-9]{2,}" placeholder="请输入中文英文数字_" required/>
+        </p>
+        <p id="r1" th:text="*{message}?:'请填写此栏'" th:class="*{message}?'red':''"></p>
+        <p id="p2">
+            电话:
+            <input type="text" id="Utel" th:field="*{tel}" autocomplete="off" maxlength="11"
+                   pattern="[0-9]{8,11}" placeholder="不要输入区号 八位数字" required/>
+        </p>
+        <p id="r2">请填写此栏</p>
+        <p id="p3">
+            邮箱:
+            <input type="email" id="Uemail" th:field="*{email}" placeholder="任意邮箱"
+                   autocomplete="off" pattern=".+@.+" maxlength="30" required/>
+        </p>
+        <p id="r3">请填写此栏</p>
+        <p id="p4">
+            住址:
+            <input type="text" id="Uadd" th:field="*{addr}" placeholder="任意住址"
+                   autocomplete="off" pattern=".+" maxlength="50" required/>
+        </p>
+        <p id="r4">请填写此栏</p>
+        <p id="p5">
+            QQ:
+            <input type="text" id="Uqq" th:field="*{qq}" pattern="[0-9]{8,10}"
+                   maxlength="14" autocomplete="off" placeholder="8-10位QQ号" required/>
+        </p>
+        <p id="r5">请填写此栏</p>
+        <input type="submit" id="sub" value="提交">
+    </form>
+    <button id="b1">重置</button>
+</div>
+</body>
+</html>
